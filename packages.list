@@ -1,0 +1,9 @@
+#trim_comment
+[version]
+0.0.1
+[description]
+trim source code comment.
+[help]
+tc.trim_comment [filename]
+[hash]
+d8917b887e4ecfdd8294b413731f3272be1127b0
