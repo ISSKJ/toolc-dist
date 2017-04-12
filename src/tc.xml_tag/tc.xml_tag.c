@@ -30,6 +30,7 @@ trim_tag(const char *str)
         cnt++;
     }
     obj->len = cnt;
+    return obj;
 }
 
 int
@@ -90,6 +91,7 @@ int main(int argc, char *argv[])
                     found = 1;
                 }
             }
+            tc_string_free(tag2);
             continue;
         }
 
