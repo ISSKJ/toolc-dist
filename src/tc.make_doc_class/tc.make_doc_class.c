@@ -35,7 +35,12 @@ read_line(FILE *fp)
 int main(int argc, char *argv[])
 {
     if (argc != 2) {
-        printf("%s [filename]\n", argv[0]);
+        printf("\
+%s [filename]\n\
+Markdown like document generator.\n\
+keywords:\n\
+  @function, @class, @method, @param, @throws, @return, @property\n\
+", argv[0]);
         return 1;
     }
 
@@ -97,6 +102,13 @@ int main(int argc, char *argv[])
             }
 
             found = strstr(data, "@return");
+            if (found) {
+                out = found;
+                printf("* %s\n", out);
+                continue;
+            }
+
+            found = strstr(data, "@throws");
             if (found) {
                 out = found;
                 printf("* %s\n", out);
