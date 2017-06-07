@@ -1,9 +1,0 @@
-#trim_comment
-[version]
-0.0.1
-[description]
-trim source code comment.
-[help]
-tc.trim_comment [filename]
-[hash]
-4a092489a41b094de429d8f8581ad6259c40e5ba
