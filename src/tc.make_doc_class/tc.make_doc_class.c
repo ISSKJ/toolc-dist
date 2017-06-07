@@ -68,7 +68,7 @@ keywords:\n\
         if (isComment) {
             found = strstr(data, "*");
             if (found) {
-                out = found + 2;
+                out = found + 1;
             } else {
                 out = data;
             }
