@@ -1,5 +1,5 @@
 #ifndef _TCSTRING_H
-#define TCSTRING_H
+#define _TCSTRING_H
 
 
 typedef struct {
