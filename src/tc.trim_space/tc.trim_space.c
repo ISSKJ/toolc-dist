@@ -178,12 +178,10 @@ int main(int argc, char *argv[])
 
     fclose(tmp);
 
-    /*
     if (unlink("./tc.trim_space.tmp") != 0) {
         perror(argv[0]);
         return 1;
     }
-    */
 
     return 0;
 }
