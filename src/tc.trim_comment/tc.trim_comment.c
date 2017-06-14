@@ -1,12 +1,18 @@
 #include <stdio.h>
 #include <string.h>
 
+int
+show_usage(const char *program)
+{
+    printf("%s [filename]\n", program);
+    return 1;
+}
+
 
 int main(int argc, char *argv[])
 {
     if (argc != 2) {
-        printf("%s [filename]\n", argv[0]);
-        return 1;
+        return show_usage(argv[0]);
     }
 
     FILE *fp;

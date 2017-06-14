@@ -2,46 +2,24 @@
 #include <stdlib.h>
 #include <string.h>
 
+#include "tc.string.h"
 
-char*
-read_line(FILE *fp)
+int
+show_usage(const char *program)
 {
-    int ch, len, eof;
-    char *data = (char*)malloc(1);
-
-    len = 0;
-    eof = 1;
-    while ((ch = fgetc(fp)) > 0) {
-        eof = 0;
-        if (ch == '\n') {
-            break;
-        }
-        len++;
-        data = (char*)realloc(data, len);
-        data[len-1] = ch;
-    }
-
-    if (eof) {
-        free(data);
-        return NULL;
-    }
-    len++;
-    data = (char*)realloc(data, len);
-    data[len-1] = '\0';
-    return data;
-}
-
-
-int main(int argc, char *argv[])
-{
-    if (argc != 2) {
-        printf("\
+    printf("\
 %s [filename]\n\
 Markdown like document generator.\n\
 keywords:\n\
   @function, @class, @interface, @method, @param, @throws, @return, @property\n\
-", argv[0]);
-        return 1;
+", program);
+    return 1;
+}
+
+int main(int argc, char *argv[])
+{
+    if (argc != 2) {
+        return show_usage(argv[0]);
     }
 
     FILE *fp;

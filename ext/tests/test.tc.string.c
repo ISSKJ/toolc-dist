@@ -1,7 +1,8 @@
-#include <stdio.h>
-#include <assert.h>
+#include "tc.string.h"
 
-#include "tcstring.h"
+#include <stdio.h>
+#include <string.h>
+#include <assert.h>
 
 void
 test1()
@@ -11,15 +12,17 @@ test1()
     TCString *obj;
 
     len = tc_string_length(str);
-    printf("[%s] len:%d\n", str, len);
+    assert(len == 11);
 
     obj = tc_string_new(str);
-    printf("[%s] len:%d\n", obj->data, obj->len);
+    assert(strcmp(obj->data, str) == 0);
+    assert(obj->len == 11);
 
     tc_string_free(obj);
 
     obj = tc_string_alloc(10);
-    printf("[%s] len:%d\n", obj->data, obj->len);
+    assert(obj != NULL);
+    assert(obj->len == 10);
 
     tc_string_free(obj);
 }
@@ -31,13 +34,11 @@ test2()
     TCString *obj;
 
     obj = tc_string_new(str);
-    printf("[%s] len:%d\n", obj->data, obj->len);
 
-    printf("[%s] == [%s] : %d\n", obj->data, "HELLO WORLD", 
-            tc_string_equal(obj, "HELLO WORLD"));
-
-    printf("[%s] == [%s] : %d\n", obj->data, "HELLO ", 
-            tc_string_equal(obj, "HELLO "));
+    assert(strcmp(obj->data, str) == 0);
+    assert(obj->len == 11);
+    assert(tc_string_equal(obj, str) == 0);
+    assert(tc_string_equal(obj, "HELLO") != 0);
 
     tc_string_free(obj);
 

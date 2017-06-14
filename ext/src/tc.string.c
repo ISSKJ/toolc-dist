@@ -1,8 +1,9 @@
-#include "tcstring.h"
+#include "tc.string.h"
 
 #include <string.h>
 #include <unistd.h>
 #include <stdlib.h>
+#include <stdio.h>
 
 
 int
@@ -68,5 +69,47 @@ tc_string_equal(TCString *str1, const char *str2)
         return strcmp(str1->data, str2);
     }
     return -1;
+}
+
+
+char*
+read_line(FILE *fp)
+{
+    int ch, len, eof;
+    char *data = (char*)malloc(sizeof(char));
+    if (!data) {
+        perror("read_line in tc.string");
+        exit(1);
+    }
+
+    len = 0;
+    eof = 1;
+    while ((ch = fgetc(fp)) > 0) {
+        eof = 0;
+        if (ch == '\n') {
+            break;
+        }
+        len++;
+        data = (char*)realloc(data, len);
+        if (!data) {
+            perror("read_line in tc.string");
+            exit(1);
+        }
+        data[len-1] = ch;
+    }
+
+    if (eof) {
+        free(data);
+        return NULL;
+    }
+    len++;
+    data = (char*)realloc(data, len);
+    if (!data) {
+        perror("read_line in tc.string");
+        exit(1);
+    }
+
+    data[len-1] = '\0';
+    return data;
 }
 

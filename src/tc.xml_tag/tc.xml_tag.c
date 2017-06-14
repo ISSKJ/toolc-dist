@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <string.h>
 
-#include "tcstring.h"
+#include "tc.string.h"
 
 #define BUFLEN 1024
 

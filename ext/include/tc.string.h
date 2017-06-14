@@ -1,6 +1,7 @@
 #ifndef _TCSTRING_H
 #define _TCSTRING_H
 
+#include <stdio.h>
 
 typedef struct {
     int len;
@@ -68,6 +69,16 @@ void tc_string_copy(TCString *, const char *);
  * int : 0 if equal 
  */
 int tc_string_equal(TCString *, const char *);
+
+/**
+ * Read a line one by one from file.
+ * [PARAMS]
+ * FILE *: file pointer
+ * [RETURN]
+ * char *: the data by line.
+ *
+ */
+char * read_line(FILE *fp);
 
 #endif
 

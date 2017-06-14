@@ -1,10 +1,16 @@
-CC=gcc
-SOURCES=*.c
-INC_PATH=../include
-LD_PATH=../linux-x86_64
-CFLAGS=-Wall 
+SOURCES=*.c ../src/tc.string.c
+PROG=test
+LD_PATH=.
+INC_PATH=../include/
+C_OPTIONS=-Wall -fPIC
 
-test1: $(SOURCES)
-	$(CC) -o $@ $(SOURCES) $(CFLAGS) -I$(INC_PATH) -Wl,-rpath $(LD_PATH) -L$(LD_PATH) -ltc
-	./$@
+$(PROG): $(SOURCES)
+	$(CC) -o $@ $(SOURCES) $(C_OPTIONS) -L$(LD_PATH) -I$(INC_PATH)
+
+run:
+	./$(PROG)
+
+clean:
+	rm -f ./$(PROG)
+
 
