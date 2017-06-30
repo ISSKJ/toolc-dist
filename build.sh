@@ -9,13 +9,20 @@ function _do_build()
     mkdir -p $DIRECTORY
     for dir in `find ./src -type d -name 'tc.*'`
     do
-        make $DIRECTORY -C $dir
+        mkdir -p $dir/bin
+        make -C $dir
+        mv $dir/bin/*  $DIRECTORY/
+        rm -rf $dir/bin
     done
 }
 
 function _do_clean()
 {
     rm -rf $DIRECTORY/*
+    for dir in `find ./src -type d -name 'tc.*'`
+    do
+        make clean -C $dir
+    done
 }
 
 function _do_usage()

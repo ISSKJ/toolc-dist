@@ -6,8 +6,9 @@ LD_PATH=.
 INC_PATH=$(EXT_DIR)/include/
 CFLAGS=-Wall -fPIC
 
-darwin-x86_64: $(SOURCES)
-	$(CC) -o "../../$@/$(PROG)" $(SOURCES) $(C_OPTIONS) -L$(LD_PATH) -I$(INC_PATH)
+make: $(SOURCES)
+	mkdir -p bin/
+	$(CC) -o bin/$(PROG) $(SOURCES) $(C_OPTIONS) -L$(LD_PATH) -I$(INC_PATH)
 
-linux-x86_64: $(SOURCES)
-	$(CC) -o "../../$@/$(PROG)" $(SOURCES) $(C_OPTIONS) -L$(LD_PATH) -I$(INC_PATH)
+clean:
+	rm -f bin/*
