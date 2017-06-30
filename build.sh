@@ -12,7 +12,7 @@ function _do_build()
         mkdir -p $dir/bin
         make -C $dir
         mv $dir/bin/*  $DIRECTORY/
-        rm -rf $dir/bin
+        make clean -C $dir
     done
 }
 
